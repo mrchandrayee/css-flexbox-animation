@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d18">
+  <title>CSS Flexbox Animation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <h1>CSS Flexbox Animation</h1>
+    <div class="showcase">
+
+      <section class="demo-card">
+        <h2>Expanding Flex Cards</h2>
+        <div class="demo demo1" aria-label="Hover over cards to expand them">
+          <div class="expand-card blue"><span>UI Design</span></div>
+          <div class="expand-card pink"><span>Branding</span></div>
+          <div class="expand-card green"><span>Motion</span></div>
+        </div>
+        <div class="code-label">CODE</div>
+        <pre class="code"><code>.demo1 {
+  display: flex;
+  gap: 14px;
+  height: 220px;
+}
+.demo1 .card {
+  flex: 1;
+  transition: all .55s ease;
+  border-radius: 22px;
+}
+.demo1 .card:hover {
+  flex: 3;
+  transform: translateY(-8px);
+}</code></pre>
+      </section>
+
+      <section class="demo-card">
+        <h2>Bouncing Flex Dots</h2>
+        <div class="demo demo2" aria-label="Five bouncing teal dots">
+          <span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span><span class="circle"></span>
+        </div>
+        <div class="code-label">CODE</div>
+        <pre class="code"><code>.demo2 {
+  display: flex;
+  gap: 18px;
+  align-items: flex-end;
+}
+.demo2 .circle {
+  animation: bounceDots 1.2s infinite ease-in-out;
+}
+.demo2 .circle:nth-child(2) { animation-delay: .15s; }
+.demo2 .circle:nth-child(3) { animation-delay: .3s; }
+
+@keyframes bounceDots {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-60px); }
+}</code></pre>
+      </section>
+
+      <section class="demo-card">
+        <h2>Flex Slide Menu Pills</h2>
+        <nav class="demo demo3" aria-label="Animated pill menu">
+          <a class="pill" href="#expanding">Home</a>
+          <a class="pill" href="#bouncing">Services</a>
+          <a class="pill active" href="#rotating">Portfolio</a>
+          <a class="pill" href="#equalizer">About</a>
+          <a class="pill" href="#flipcards">Contact</a>
+        </nav>
+        <div class="code-label">CODE</div>
+        <pre class="code"><code>.demo3 {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.demo3 .pill {
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.demo3 .pill:hover {
+  transform: translateY(-10px) scale(1.05);
+}</code></pre>
+      </section>
+
+      <section class="demo-card" id="rotating">
+        <h2>Flex Rotating Stack</h2>
+        <div class="demo demo4" aria-label="Four rotating gradient blocks">
+          <span class="stack-box"></span><span class="stack-box"></span><span class="stack-box"></span><span class="stack-box"></span>
+        </div>
+        <div class="code-label">CODE</div>
+        <pre class="code"><code>.demo4 {
+  display: flex;
+  gap: 16px;
+  perspective: 900px;
+}
+.demo4 .box {
+  animation: spinStack 3.5s infinite ease-in-out;
+}
+@keyframes spinStack {
+  0%, 100% { transform: rotateY(0deg); }
+  50% { transform: rotateY(180deg); }
+}</code></pre>
+      </section>
+
+      <section class="demo-card" id="equalizer">
+        <h2>Flex Equalizer Bars</h2>
+        <div class="demo demo5" aria-label="Five animated equalizer bars">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </div>
+        <div class="code-label">CODE</div>
+        <pre class="code"><code>.demo5 {
+  display: flex;
+  align-items: flex-end;
+  gap: 14px;
+}
+.demo5 .bar {
+  width: 32px;
+  animation: barsWave 1.3s infinite ease-in-out;
+}
+@keyframes barsWave {
+  0%, 100% { transform: scaleY(.75); }
+  50% { transform: scaleY(1.2); }
+}</code></pre>
+      </section>
+
+      <section class="demo-card" id="flipcards">
+        <h2>Flex Flip Cards Row</h2>
+        <div class="demo demo6">
+          <div class="flip-card" tabindex="0"><div class="flip-inner"><div class="flip-face flip-front">01</div><div class="flip-face flip-back">Design</div></div></div>
+          <div class="flip-card" tabindex="0"><div class="flip-inner"><div class="flip-face flip-front">02</div><div class="flip-face flip-back">Build</div></div></div>
+          <div class="flip-card" tabindex="0"><div class="flip-inner"><div class="flip-face flip-front">03</div><div class="flip-face flip-back">Launch</div></div></div>
+        </div>
+        <div class="code-label">CODE</div>
+        <pre class="code"><code>.demo6 {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+.flip-card { perspective: 800px; }
+.flip-inner {
+  transform-style: preserve-3d;
+  transition: transform .6s ease;
+}
+.flip-card:hover .flip-inner,
+.flip-card:focus .flip-inner {
+  transform: rotateY(180deg);
+}</code></pre>
+        <p class="note">The video ends as this section heading appears; the flip-card example is an added runnable completion based on the visible title.</p>
+      </section>
+    </div>
+    <footer><button id="pauseBtn" type="button">Pause animations</button><span>CSS Flexbox · Interactive animation examples</span></footer>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>

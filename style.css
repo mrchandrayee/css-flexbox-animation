@@ -1,0 +1,199 @@
+* { box-sizing: border-box; }
+:root {
+  color-scheme: dark;
+  --bg: #080d18;
+  --panel: #111827;
+  --cyan: #49b8ec;
+  --orange: #f28a24;
+}
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 24px 14px 40px;
+  background: #000;
+  color: #f3f6fc;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.app { width: min(100%, 760px); margin: 0 auto; }
+h1 {
+  margin: 4px 0 28px;
+  color: #a9d4ff;
+  text-align: center;
+  font-size: clamp(26px, 5vw, 40px);
+  text-shadow: 0 0 3px #268cff, 0 0 13px rgba(38,140,255,.55);
+}
+.showcase {
+  padding: 14px;
+  border: 4px solid var(--orange);
+  background: #080d18;
+  box-shadow: 0 0 18px rgba(242,138,36,.12);
+}
+.demo-card {
+  margin: 0 0 18px;
+  overflow: hidden;
+  border: 1px solid rgba(148,163,184,.10);
+  border-radius: 18px;
+  background: linear-gradient(145deg, #171e2d, #101725 75%);
+}
+.demo-card:last-child { margin-bottom: 0; }
+.demo-card h2 {
+  margin: 0;
+  padding: 17px 20px;
+  border-bottom: 1px solid rgba(148,163,184,.08);
+  color: #f3f5fa;
+  font-size: 16px;
+}
+.demo {
+  min-height: 190px;
+  margin: 16px 16px 0;
+  padding: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  overflow: hidden;
+  border-radius: 13px;
+  background: linear-gradient(120deg, #101f34, #0b1424 65%, #11132c);
+}
+.code-label {
+  margin-top: 16px;
+  padding: 14px 16px 8px;
+  border-top: 1px solid rgba(148,163,184,.08);
+  color: #4db7e7;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+.code {
+  margin: 0 16px 16px;
+  padding: 15px 16px;
+  overflow-x: auto;
+  border-radius: 11px;
+  background: #020817;
+  color: #d0e0f5;
+  font: 12px/1.55 "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  tab-size: 2;
+}
+.code code { font: inherit; }
+
+/* Expanding Flex Cards */
+.demo1 { height: 220px; align-items: stretch; padding: 14px; }
+.expand-card {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  border-radius: 18px;
+  transition: flex .55s ease, transform .55s ease, filter .55s ease;
+  cursor: pointer;
+}
+.expand-card span {
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  color: rgba(255,255,255,.92);
+  font-size: 12px;
+  font-weight: 700;
+}
+.expand-card:hover, .expand-card:focus-within { flex: 3; transform: translateY(-8px); filter: saturate(1.12); }
+.blue { background: linear-gradient(145deg,#159de8,#2462df); }
+.pink { background: linear-gradient(145deg,#8b43e9,#ec3999); }
+.green { background: linear-gradient(145deg,#17c778,#0da88e); }
+
+/* Bouncing Flex Dots */
+.demo2 { height: 190px; align-items: flex-end; padding-bottom: 50px; }
+.circle { width: 34px; height: 34px; flex: 0 0 34px; border-radius: 50%; background: #24c4a5; box-shadow: 0 0 14px rgba(36,196,165,.18); animation: bounceDots 1.2s infinite ease-in-out; }
+.circle:nth-child(2) { animation-delay: .15s; }
+.circle:nth-child(3) { animation-delay: .3s; }
+.circle:nth-child(4) { animation-delay: .45s; }
+.circle:nth-child(5) { animation-delay: .6s; }
+@keyframes bounceDots { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-60px); } }
+
+/* Flex Slide Menu Pills */
+.demo3 { min-height: 190px; flex-wrap: wrap; gap: 12px; }
+.pill {
+  padding: 11px 18px;
+  border-radius: 30px;
+  color: #fff;
+  background: linear-gradient(100deg,#ff8b16,#ef4c25);
+  box-shadow: 0 5px 12px rgba(241,91,33,.18);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  transition: transform .35s ease, box-shadow .35s ease, background .35s ease;
+}
+.pill:hover, .pill:focus-visible { transform: translateY(-10px) scale(1.05); background: linear-gradient(100deg,#e83aab,#8b4de8); box-shadow: 0 10px 20px rgba(199,62,184,.3); }
+.pill.active { background: linear-gradient(100deg,#d83da7,#8249df); }
+
+/* Flex Rotating Stack */
+.demo4 { perspective: 900px; }
+.stack-box {
+  width: 46px; height: 46px; flex: 0 0 46px;
+  border-radius: 9px;
+  background: linear-gradient(145deg,#4a9eff,#7550e9);
+  box-shadow: 0 5px 14px rgba(77,105,255,.22);
+  animation: spinStack 3.5s infinite ease-in-out;
+}
+.stack-box:nth-child(2) { animation-delay: .15s; }
+.stack-box:nth-child(3) { animation-delay: .3s; }
+.stack-box:nth-child(4) { animation-delay: .45s; }
+@keyframes spinStack { 0%,100% { transform: rotateY(0deg); } 50% { transform: rotateY(180deg); } }
+
+/* Flex Equalizer Bars */
+.demo5 { height: 190px; align-items: flex-end; padding-bottom: 22px; gap: 14px; }
+.bar {
+  width: 32px; height: 100px; flex: 0 0 32px;
+  border-radius: 12px 12px 5px 5px;
+  background: linear-gradient(180deg,#35c4ef,#8a4ee8);
+  transform-origin: bottom;
+  animation: barsWave 1.3s infinite ease-in-out;
+  box-shadow: 0 0 14px rgba(87,105,239,.16);
+}
+.bar:nth-child(1) { height: 66px; animation-delay: -.4s; }
+.bar:nth-child(2) { height: 96px; animation-delay: -.2s; }
+.bar:nth-child(3) { height: 126px; }
+.bar:nth-child(4) { height: 88px; animation-delay: -.3s; }
+.bar:nth-child(5) { height: 60px; animation-delay: -.5s; }
+@keyframes barsWave { 0%,100% { transform: scaleY(.75); } 50% { transform: scaleY(1.2); } }
+
+/* Flex Flip Cards Row — completion inferred from final visible heading */
+.demo6 { min-height: 190px; gap: 14px; }
+.flip-card { width: 84px; height: 108px; flex: 0 1 84px; perspective: 800px; outline: none; cursor: pointer; }
+.flip-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform .6s ease; }
+.flip-card:hover .flip-inner, .flip-card:focus .flip-inner { transform: rotateY(180deg); }
+.flip-face {
+  position: absolute; inset: 0; display: grid; place-items: center;
+  border-radius: 13px; backface-visibility: hidden;
+  color: #fff; font-size: 17px; font-weight: 800;
+  background: linear-gradient(145deg,#419cff,#764be7);
+}
+.flip-back { transform: rotateY(180deg); background: linear-gradient(145deg,#e63fa4,#7548e9); }
+.note { margin: 0 16px 16px; color: #8d9bb0; font-size: 11px; line-height: 1.5; }
+footer { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 14px; padding: 22px 0; color: #8190a5; font-size: 11px; }
+footer button { padding: 9px 14px; border: 1px solid #34445b; border-radius: 8px; background: #111c2c; color: #dbeafe; cursor: pointer; }
+footer button:hover { border-color: #4db7e7; }
+
+body.paused .circle, body.paused .stack-box, body.paused .bar { animation-play-state: paused; }
+
+@media (max-width: 480px) {
+  body { padding: 18px 8px 28px; }
+  h1 { margin-bottom: 20px; }
+  .showcase { padding: 8px; border-width: 3px; }
+  .demo-card h2 { padding: 14px; font-size: 14px; }
+  .demo { margin: 12px 10px 0; min-height: 165px; padding: 12px; }
+  .demo1 { height: 180px; gap: 8px; }
+  .expand-card { border-radius: 13px; }
+  .expand-card span { left: 8px; bottom: 10px; font-size: 9px; }
+  .circle { width: 25px; height: 25px; flex-basis: 25px; }
+  .demo2 { gap: 11px; padding-bottom: 42px; }
+  .pill { padding: 9px 12px; font-size: 10px; }
+  .stack-box { width: 36px; height: 36px; flex-basis: 36px; }
+  .demo4 { gap: 11px; }
+  .bar { width: 25px; flex-basis: 25px; }
+  .demo5 { gap: 10px; }
+  .code-label { margin-top: 12px; padding: 12px 12px 7px; }
+  .code { margin: 0 10px 12px; padding: 12px; font-size: 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
